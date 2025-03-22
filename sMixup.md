@@ -114,7 +114,7 @@
 - **Structural Preservation (Case Study):**  
   A case study on the MOTIF dataset demonstrates that S‑Mixup preserves key motifs (e.g., cycle structures) in the mixed graphs. Furthermore, the normalized graph edit distance (GED) aligns well with the mixup ratio when λ is large, confirming the method’s theoretical basis.
 
-### Summary of Interpretation as a Table
+### Summary of Interpretation
 
 | **Aspect**                    | **Result / Interpretation**                                                                                                                                  |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -126,7 +126,7 @@
 
 ---
 
-### Table 2. Hyperparameters
+### Hyperparameters
 
 | **Hyperparameter**         | **Short Description**                                                                                                              | **Options / Range**                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
