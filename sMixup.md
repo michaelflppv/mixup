@@ -55,7 +55,7 @@
 
 ---
 
-### Table 1. Computational Considerations
+### Computational Considerations
 
 | **Aspect**                   | **Complexity / Details**                                                                                                          | **Notes**                                                                                           |
 |------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -65,44 +65,23 @@
 
 ---
 
-### Table 2. Hyperparameters
-
-| **Hyperparameter**         | **Short Description**                                                                                                              | **Options / Range**                                                        |
-|----------------------------|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| **mixup_alpha (α)**        | Controls the strength of interpolation by parameterizing the Beta distribution for sampling mixup ratios.                           | Discrete values from grid search: {0.1, 0.2, 0.5, 1, 2, 5, 10}             |
-| **Normalization Function** | Function used to normalize the soft assignment matrix (i.e., to convert raw similarity scores into a probability distribution).       | "softmax" (column‑wise) or "sinkhorn" (doubly‑stochastic), with softmax chosen for efficiency |
-| **Similarity Metric (sim)**| Metric used in the graph matching network to compute the similarity between node representations for soft alignment.               | "cosine similarity" or "Euclidean distance"                                |
-| **Triplet Loss Margin (γ)**| The margin in the triplet loss function used to train the graph matching network (ensuring that graphs from the same class are closer). | Not explicitly specified; selected via grid search                         |
-| **λ Transformation**       | A design choice ensuring that the mixup ratio λ is in the range [0.5, 1] by taking λ = max(λ′, 1−λ′), where λ′ ~ Beta(α, α).         | Enforces λ ∈ [0.5, 1] (not tunable; fixed as a design decision)              |
-
----
-
-Below is a concise synthesis of the most important points from the **Related Work** and **Discussion** sections, using interpretations directly supported by the text.
-
----
-
 ### Related Work
 
 - **Existing Graph Augmentation Methods:**  
   - Most approaches (e.g., DropEdge, DropNode, Subgraph) modify a single graph by randomly dropping edges or nodes, which may not create sufficiently diverse samples and are not guaranteed to preserve labels.  
     > *"Most commonly used graph data augmentation methods... are based on uniformly random modifications of graph elements..."*  
-    > — *[citeturn1file0]*
 
 - **Previous Mixup Approaches for Graphs:**  
   - **Latent Space Interpolation:** Methods like M‑Mixup interpolate graph representations at the final GNN layer, but this may lose fine-grained structural details.  
     > *"Wang et al. (2021b) follows manifold Mixup... but this solution may be not optimal."*  
-    > — *[citeturn1file0]*  
   - **Input Space Interpolation with Heuristics:** Methods such as ifMixup use arbitrary node ordering to align graphs, which can lead to noisy results and distribution shifts.  
     > *"ifMixup... uses an arbitrary node order to align two graphs and linearly interpolates... ifMixup doesn’t consider the node-level correspondences between graphs..."*  
-    > — *[citeturn1file0]*  
   - **Subgraph-Based Approaches:** Techniques like Graph Transplant and SubMix connect or mix subgraphs but may not preserve key motifs or node features.  
     > *"Graph Transplant... and SubMix... only consider graph topology, so the node features... are kept the same."*  
-    > — *[citeturn1file0]*
 
 - **Key Insight of S‑Mixup:**  
   - Unlike prior methods, S‑Mixup explicitly models the node-level correspondence via a soft assignment matrix, which enables image-like mixup on graphs and avoids the generation of noisy data.  
     > *"none of these methods explicitly consider the node-level correspondence between graphs... In contrast, our approach uses soft graph alignments to compute the node-level correspondence and mixes graphs based on the alignment."*  
-    > — *[citeturn1file0]*
 
 ---
 
@@ -121,7 +100,7 @@ Below is a concise synthesis of the most important points from the **Related Wor
 
 ---
 
-### Key Results and Their Interpretation
+### Experiments
 
 - **Performance and Generalization:**  
   S‑Mixup improves graph classification performance compared to vanilla GNNs and other mixup methods. For instance, compared to a GCN without augmentation, S‑Mixup yields improvements of 4.45% on REDDIT‑BINARY, 3.3% on REDDIT‑MULTI‑5K, and 3.09% on NCI1. Learning curves also show that S‑Mixup drives the model to converge to a lower test loss, effectively preventing overfitting.
@@ -145,4 +124,14 @@ Below is a concise synthesis of the most important points from the **Related Wor
 | **Mixup Strategy**            | Mixing graphs from different classes and using a higher mixup ratio (λ ∈ [0.5, 1]) yields better performance than mixing only same-class graphs or using λ ∈ [0, 1].          |
 | **Structural Preservation**   | Case studies (e.g., on the MOTIF dataset) show that S‑Mixup preserves key structural motifs, with normalized GED aligning closely with the mixup ratio when λ is large. |
 
+---
 
+### Table 2. Hyperparameters
+
+| **Hyperparameter**         | **Short Description**                                                                                                              | **Options / Range**                                                        |
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **mixup_alpha (α)**        | Controls the strength of interpolation by parameterizing the Beta distribution for sampling mixup ratios.                           | Discrete values from grid search: {0.1, 0.2, 0.5, 1, 2, 5, 10}             |
+| **Normalization Function** | Function used to normalize the soft assignment matrix (i.e., to convert raw similarity scores into a probability distribution).       | "softmax" (column‑wise) or "sinkhorn" (doubly‑stochastic), with softmax chosen for efficiency |
+| **Similarity Metric (sim)**| Metric used in the graph matching network to compute the similarity between node representations for soft alignment.               | "cosine similarity" or "Euclidean distance"                                |
+| **Triplet Loss Margin (γ)**| The margin in the triplet loss function used to train the graph matching network (ensuring that graphs from the same class are closer). | Not explicitly specified; selected via grid search                         |
+| **λ Transformation**       | A design choice ensuring that the mixup ratio λ is in the range [0.5, 1] by taking λ = max(λ′, 1−λ′), where λ′ ~ Beta(α, α).         | Enforces λ ∈ [0.5, 1] (not tunable; fixed as a design decision)              |
