@@ -177,6 +177,18 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
 
 ---
 
+## Hyperparameters Description
+
+| **Hyperparameter**         | **Short Description**                                                                           | **Options / Range**                                                                                                                                                          |
+|----------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **α (mixup_alpha)**        | Controls the strength of interpolation between two examples (the Beta distribution’s shape).    | α ∈ (0, ∞); typical values: 0.1–0.4 for ImageNet, 1 for CIFAR, {1, 2, 8, 32} for experiments with corrupted labels, 0.2 for GAN experiments.                           |
+| **λ (mixup coefficient)**  | The convex combination weight used to mix two examples; drawn from Beta(α, α).                    | λ ∈ [0, 1]; its distribution is governed by α.                                                                                                                               |
+| **Pair Selection Strategy**| Determines how the two examples are selected for mixing.                                        | Default is "Random Pairing"; alternatives include "k-Nearest Neighbors (KNN)" (e.g., k=200), "Same Class (SC)" vs. "All Classes (AC)".                                      |
+| **Dropout Probability (p)**| (When combined with mixup) The rate at which units are randomly dropped for additional regularization. | p ∈ {0.5, 0.7, 0.8, 0.9} in standard settings; in mixup+dropout experiments, p ∈ {0.3, 0.5, 0.7}.                                                                              |
+| **Weight Decay**           | Regularization parameter applied to network weights during training.                           | Common values are 1e-4 (preferred with mixup) or 5e-4 (used for ERM in ablation studies).                                                                                    |
+
+---
+
 ### 4 RELATED WORK
 
 - **Data Augmentation’s Role:**  
