@@ -3,20 +3,16 @@
 ## 1. Empirical Risk Minimization (ERM)
 
 **Definition:**  
-ERM seeks a function *f* ∈ *F* that minimizes the average loss over the training data. It relies on the empirical risk computed from a finite set of examples.
+ERM seeks a function $ f $ that minimizes the average loss over the training data. It relies on the empirical risk computed from a finite set of examples.
 
 > [!IMPORTANT]  
 > ERM is a standard training method where the model is trained by minimizing the average error on the training data. In other words, it tries to fit the training examples as well as possible, which can sometimes lead to memorizing the data rather than learning general patterns.
 
 **Formulas:**  
 - **Expected Risk:**  
-  ```
-  R(f) = ∫ `(f(x), y) dP(x, y)
-  ```
+  $$ R(f) = \int \ell(f(x), y) \, dP(x, y) $$
 - **Empirical Risk:**  
-  ```
-  Rδ(f) = 1/n ∑₍ᵢ₌₁₎ⁿ `(f(xᵢ), yᵢ)
-  ```  
+  $$ R_\delta(f) = \frac{1}{n} \sum_{i=1}^n \ell(f(x_i), y_i) $$  
 
 | Advantages | Disadvantages |
 |------------|---------------|
@@ -27,22 +23,18 @@ ERM seeks a function *f* ∈ *F* that minimizes the average loss over the traini
 ## 2. Vicinal Risk Minimization (VRM)
 
 **Definition:**  
-VRM approximates the unknown data distribution by defining a vicinity (or neighborhood) around each training example using a vicinity distribution *ν*.
+VRM approximates the unknown data distribution by defining a vicinity (or neighborhood) around each training example using a vicinity distribution \( \nu \).
 
 > [!IMPORTANT]  
 > VRM extends ERM by considering not just the exact training examples but also the nearby (or "vicinal") points. This is done by generating new examples through small modifications (data augmentation) of the original ones. The idea is to better approximate the true data distribution and help the model generalize beyond just the exact training points.
 
 **Formulas:**  
 - **VRM Distribution:**  
-  ```
-  Pν(x̃, ỹ) = 1/n ∑₍ᵢ₌₁₎ⁿ ν(x̃, ỹ | xᵢ, yᵢ)
-  ```  
+  $$ P_\nu(\tilde{x}, \tilde{y}) = \frac{1}{n} \sum_{i=1}^n \nu(\tilde{x}, \tilde{y} \mid x_i, y_i) $$  
 
 - **Example (Gaussian Vicinity):**  
-  ```
-  ν(x̃, ỹ|xᵢ, yᵢ) = N(x̃ − xᵢ, σ²) δ(ỹ = yᵢ)
-  ```  
-  > "Chapelle et al. (2000) considered Gaussian vicinities ν(x̃, ỹ|xᵢ, yᵢ) = N (x̃− xᵢ, σ²) δ(ỹ = yᵢ)."  
+  $$ \nu(\tilde{x}, \tilde{y} \mid x_i, y_i) = \mathcal{N}(\tilde{x} - x_i, \sigma^2) \, \delta(\tilde{y} = y_i) $$  
+  > "Chapelle et al. (2000) considered Gaussian vicinities \(\nu(\tilde{x}, \tilde{y} \mid x_i, y_i) = \mathcal{N}(\tilde{x} - x_i, \sigma^2) \, \delta(\tilde{y} = y_i)\)."  
 
 | Advantages | Disadvantages |
 |------------|---------------|
@@ -53,7 +45,7 @@ VRM approximates the unknown data distribution by defining a vicinity (or neighb
 ### Definitions
 
 > [!NOTE]  
-> The classic VC-dimension bounds provide a way to quantify how the generalization error (true risk) of a hypothesis $\( h \)$ in a hypothesis class $\(\mathcal{H}\)$ relates to its empirical error, taking into account the complexity of $\(\mathcal{H}\)$ (measured by its VC-dimension $\(d\))$ and the number of training samples $\(n\)$.
+> The classic VC-dimension bounds provide a way to quantify how the generalization error (true risk) of a hypothesis \( h \) in a hypothesis class \(\mathcal{H}\) relates to its empirical error, taking into account the complexity of \(\mathcal{H}\) (measured by its VC-dimension \( d \)) and the number of training samples \( n \).
 
 > [!NOTE]  
 > An adversarial example is an input that has been slightly and intentionally perturbed to fool a model into making a wrong prediction, even though the change is imperceptible to humans.
@@ -70,15 +62,11 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
 
 **Formulas:**  
 - **mixup Vicinal Distribution:**  
-  ```
-  µ(x̃, ỹ|xᵢ, yᵢ) = 1/n ∑ⱼ Eₗ [δ(x̃ = λ · xᵢ + (1−λ) · xⱼ, ỹ = λ · yᵢ + (1−λ) · yⱼ)],  where λ ∼ Beta(α, α)
-  ```  
-
+  $$ \mu(\tilde{x}, \tilde{y} \mid x_i, y_i) = \frac{1}{n} \sum_j \mathbb{E}_{\lambda} \left[\delta\left(\tilde{x} = \lambda x_i + (1-\lambda)x_j,\ \tilde{y} = \lambda y_i + (1-\lambda)y_j\right)\right], \quad \text{where } \lambda \sim \mathrm{Beta}(\alpha, \alpha) $$
+  
 - **Simplified Virtual Example Creation:**  
-  ```
-  x̃ = λxᵢ + (1−λ)xⱼ  
-  ỹ = λyᵢ + (1−λ)yⱼ
-  ```  
+  $$ \tilde{x} = \lambda x_i + (1-\lambda)x_j $$
+  $$ \tilde{y} = \lambda y_i + (1-\lambda)y_j $$
 
 **Advantages:**  
 - **Data-Agnostic:** No need for domain-specific augmentations.  
@@ -90,7 +78,7 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
   > "can be implemented in a few lines of code, and introduces minimal computation overhead."  
 
 **Disadvantages:**  
-- **Hyperparameter Sensitivity:** The choice of α is crucial; large α may lead to underfitting.  
+- **Hyperparameter Sensitivity:** The choice of \( \alpha \) is crucial; large \( \alpha \) may lead to underfitting.  
 - **Design Choices Matter:**  
   - Interpolating only between examples of the same class did not yield performance gains.  
   - Using convex combinations of three or more examples increases computational cost without further benefit.  
@@ -126,7 +114,7 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
 
 ### 3.4 MEMORIZATION OF CORRUPTED LABELS
 
-> **"mixup with a large α (e.g. 8 or 32) outperforms dropout on both the best and last epoch test errors, and achieves lower training error on real labels while remaining resistant to noisy labels."**  
+> **"mixup with a large $ \alpha $ (e.g. 8 or 32) outperforms dropout on both the best and last epoch test errors, and achieves lower training error on real labels while remaining resistant to noisy labels."**  
 
 - **Note:**  
   - **Result:** Mixup not only resists memorizing corrupted labels but also shows lower test errors compared to both standard ERM and dropout-based methods.  
@@ -164,7 +152,7 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
 
 - **Note:**  
   - **Result:** Systematic variations in design choices (e.g., using different weight decay values, interpolating latent representations vs. raw inputs, mixing only same-class examples) consistently show that the standard mixup (random convex combinations of raw inputs and their labels) outperforms alternatives.  
-  - **Interpretation:** These ablation studies confirm that every component of mixup contributes to its performance, underscoring the importance of both input and label interpolation as well as the chosen hyperparameters (like the α parameter).
+  - **Interpretation:** These ablation studies confirm that every component of mixup contributes to its performance, underscoring the importance of both input and label interpolation as well as the chosen hyperparameters (like the \( \alpha \) parameter).
 
 ## Summary Interpretation
 
@@ -173,7 +161,7 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
 | **Generalization Improvement** | Mixup consistently reduces test errors across diverse datasets (image, speech, tabular), indicating enhanced generalization compared to ERM.               |
 | **Robustness Enhancements**    | Models trained with mixup exhibit increased robustness to adversarial attacks and corrupted labels, attributed to smoother, linear decision boundaries.      |
 | **Stability in GANs**          | When applied to GANs, mixup stabilizes training by regularizing the discriminator’s gradients, providing more reliable feedback to the generator.              |
-| **Design Validation**          | Ablation studies confirm that each component of mixup (convex combination of inputs and labels, choice of hyperparameter α) is crucial for its performance.  |
+| **Design Validation**          | Ablation studies confirm that each component of mixup (convex combination of inputs and labels, choice of hyperparameter \( \alpha \)) is crucial for its performance.  |
 
 ---
 
@@ -181,11 +169,11 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
 
 | **Hyperparameter**         | **Short Description**                                                                           | **Options / Range**                                                                                                                                                          |
 |----------------------------|-------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **α (mixup_alpha)**        | Controls the strength of interpolation between two examples (the Beta distribution’s shape).    | α ∈ (0, ∞); typical values: 0.1–0.4 for ImageNet, 1 for CIFAR, {1, 2, 8, 32} for experiments with corrupted labels, 0.2 for GAN experiments.                           |
-| **λ (mixup coefficient)**  | The convex combination weight used to mix two examples; drawn from Beta(α, α).                    | λ ∈ [0, 1]; its distribution is governed by α.                                                                                                                               |
+| **\( \alpha \) (mixup\_alpha)**        | Controls the strength of interpolation between two examples (the Beta distribution’s shape).    | \( \alpha \in (0, \infty) \); typical values: 0.1–0.4 for ImageNet, 1 for CIFAR, \{1, 2, 8, 32\} for experiments with corrupted labels, 0.2 for GAN experiments.                           |
+| **\( \lambda \) (mixup coefficient)**  | The convex combination weight used to mix two examples; drawn from Beta(\( \alpha \), \( \alpha \)).                    | \( \lambda \in [0, 1] \); its distribution is governed by \( \alpha \).                                                                                                                               |
 | **Pair Selection Strategy**| Determines how the two examples are selected for mixing.                                        | Default is "Random Pairing"; alternatives include "k-Nearest Neighbors (KNN)" (e.g., k=200), "Same Class (SC)" vs. "All Classes (AC)".                                      |
-| **Dropout Probability (p)**| (When combined with mixup) The rate at which units are randomly dropped for additional regularization. | p ∈ {0.5, 0.7, 0.8, 0.9} in standard settings; in mixup+dropout experiments, p ∈ {0.3, 0.5, 0.7}.                                                                              |
-| **Weight Decay**           | Regularization parameter applied to network weights during training.                           | Common values are 1e-4 (preferred with mixup) or 5e-4 (used for ERM in ablation studies).                                                                                    |
+| **Dropout Probability (\( p \))**| (When combined with mixup) The rate at which units are randomly dropped for additional regularization. | \( p \in \{0.5, 0.7, 0.8, 0.9\} \) in standard settings; in mixup+dropout experiments, \( p \in \{0.3, 0.5, 0.7\} \).                                                                              |
+| **Weight Decay**           | Regularization parameter applied to network weights during training.                           | Common values are \( 1 \times 10^{-4} \) (preferred with mixup) or \( 5 \times 10^{-4} \) (used for ERM in ablation studies).                                                                                    |
 
 ---
 
@@ -223,7 +211,7 @@ mixup is a data-agnostic augmentation technique that generates virtual training 
   - It combats issues like memorization of corrupt labels, sensitivity to adversarial examples, and instability in adversarial training.
 
 - **Trade-Off and Model Complexity:**  
-  - *"with increasingly large α, the training error on real data increases, while the generalization gap decreases."*  
+  - *"with increasingly large \( \alpha \), the training error on real data increases, while the generalization gap decreases."*  
     - **Explanation:** This trend suggests that mixup implicitly controls model complexity. However, the exact “sweet spot” for this bias-variance trade-off remains an open question.
 
 - **Future Directions:**  
