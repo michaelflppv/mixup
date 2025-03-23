@@ -57,11 +57,11 @@
 
 ### Computational Considerations
 
-| **Aspect**                   | **Complexity / Details**                                                                                                          | **Notes**                                                                                           |
-|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| **Space Complexity**         | \(O(n_1 \times n_2)\)                                                                                                               | Depends on the number of nodes in each graph.                                                     |
-| **Time Complexity**          | \(O(n_1 \times n_2)\) for computing attention weights in the soft assignment matrix                                                  | Manageable for small graphs; may become heavy for large-scale graphs.                              |
-| **Trade-off**                | High-quality node alignment vs. increased computational cost                                                                       | The enhanced performance and generalization come at the expense of additional computation on large graphs. |
+| **Aspect**                   | **Complexity / Details**                                                          | **Notes**                                                                                           |
+|------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| **Space Complexity**         | $O(n_1 \times n_2) $                                                              | Depends on the number of nodes in each graph.                                                     |
+| **Time Complexity**          | $O(n_1 \times n_2)$ for computing attention weights in the soft assignment matrix | Manageable for small graphs; may become heavy for large-scale graphs.                              |
+| **Trade-off**                | High-quality node alignment vs. increased computational cost                      | The enhanced performance and generalization come at the expense of additional computation on large graphs. |
 
 ---
 
