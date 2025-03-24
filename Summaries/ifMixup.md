@@ -155,6 +155,13 @@ The paper claims that the ifMixup process is **information lossless**—meaning 
 
 ### 5. Impact of Node Order Shuffling
 
+- **Results:**  
+  - In experiments using an 8-layer GCN on the NCI109 and NCI1 datasets, shuffling node order for every epoch resulted in performance degradation (e.g., lower accuracy on NCI1).
+  - When the network depth was increased to 16 layers, shuffling at every epoch improved performance—on NCI1, accuracy increased from 81.4% (8 layers, with frequent shuffling) to 82.2% (16 layers, with frequent shuffling).
+  
+- **Interpretation:**  
+  Node order permutation (shuffling) affects the input diversity. In shallower models, excessive shuffling may overwhelm the limited modeling capacity, whereas deeper models can exploit the increased variability to achieve higher predictive accuracy.
+
 > **"Results in Table 4 show that shuffling the graph for each epoch (high frequency) may hurt the performance (e.g., for the NCI1 dataset), but ifMixup seems to be insensitive to less frequent shuffling scenarios."**  
 
 - **Interpretation:** 
@@ -165,8 +172,13 @@ The paper claims that the ifMixup process is **information lossless**—meaning 
 
 > **"Figure 4 shows the histograms of the number of graph nodes and edges for both the original graphs and mixed graphs on NCI109. From Figure 4, one can see that ifMixup slightly shifted the node and edge distributions, but with very similar distributions overall."**  
 
+- **Results:**  
+  - Comparing different pairing strategies, the "random pair" scenario achieved the highest accuracy (approximately 0.820 ± 0.005 on NCI109 and 0.819 ± 0.004 on NCI1).
+  - Other scenarios—such as mixing graphs forced to be of the same size (with or without shuffling) or self-paired graphs—resulted in noticeably lower accuracies.
+
 - **Interpretation:**  
   - Using dummy nodes to align graph sizes does not dramatically alter the graph statistics, meaning the mixed graphs still resemble the original graphs in terms of node and edge counts.
+  -   The random pairing of graphs (with the addition of dummy nodes for alignment) is more effective than enforcing same-size constraints or self-pairing. This indicates that preserving the natural variability in graph structure is beneficial for regularization and ultimately leads to improved performance.
 
 ### 7. Comparison Using Different GNN Architectures
 
@@ -185,70 +197,20 @@ The paper claims that the ifMixup process is **information lossless**—meaning 
 | **Comparison with Other Methods** | ifMixup also outperforms attention-based models (GAT, GATv2) and other Mixup variants (MixupGraph) on multiple datasets, demonstrating superior regularization for graph classification. |
 | **Mixing Ratio Sensitivity**      | ifMixup is robust to various mixing ratios (i.e., different Beta distributions), whereas MixupGraph shows higher sensitivity to these parameters.                                           |
 | **GNN Depth Effect**              | ifMixup benefits from deeper network architectures (e.g., moving from 5 to 8 or 16 layers improves accuracy), unlike baselines which suffer performance drops with increased depth.      |
-| **Node Order Shuffling**          | Moderate shuffling frequency does not harm ifMixup’s performance; with deeper networks, even frequent shuffling can enhance accuracy by increasing input variety.                          |
+| **Node Order Shuffling**          | Excessive node shuffling harms performance in shallow networks; however, with increased depth (e.g., 16 layers), frequent shuffling enhances accuracy by providing greater input variety.                         |
 | **Graph Size Impact**             | The process of adding dummy nodes for aligning graph sizes results in only slight shifts in node and edge distributions, preserving the overall structural characteristics of graphs.      |
-
----
-
-## Ablation Study
-
-### 1. Sensitivity of Mixing Ratio
-
-- **Results:**  
-  - Both MixupGraph and ifMixup achieved superior performance when using a conservative mixing ratio sampled from Beta(20, 1) on six molecule datasets.
-  - MixupGraph’s accuracy significantly degraded when using Beta(1, 1) and Beta(2, 2) (uniform and bell-shaped distributions), whereas ifMixup maintained robust performance across all five Beta distributions tested.
-  
-- **Interpretation:**  
-  ifMixup exhibits robust behavior with respect to the choice of mixing ratio distribution. In contrast, MixupGraph is highly sensitive to this hyperparameter, leading to degraded performance under less conservative (more uniformly distributed) mixing settings.
-
-### 2. Impact of GNN Depth
-
-- **Results:**  
-  - When increasing the GCN network depth from 5 layers to 8 layers, baseline GCN and MixupGraph showed a performance degradation (approximately a 10% accuracy drop for NCI109 and NCI1).
-  - Conversely, ifMixup’s accuracy improved consistently on all six datasets with deeper networks.
-  
-- **Interpretation:**  
-  ifMixup benefits from increased network depth, suggesting that its regularization effect scales positively with model complexity. Deeper GNNs using ifMixup avoid the degradation seen in standard methods, indicating better handling of issues such as over-smoothing and overfitting in deeper architectures.
-
-### 3. Impact of Node Order Shuffling
-
-- **Results:**  
-  - In experiments using an 8-layer GCN on the NCI109 and NCI1 datasets, shuffling node order for every epoch resulted in performance degradation (e.g., lower accuracy on NCI1).
-  - When the network depth was increased to 16 layers, shuffling at every epoch improved performance—on NCI1, accuracy increased from 81.4% (8 layers, with frequent shuffling) to 82.2% (16 layers, with frequent shuffling).
-  
-- **Interpretation:**  
-  Node order permutation (shuffling) affects the input diversity. In shallower models, excessive shuffling may overwhelm the limited modeling capacity, whereas deeper models can exploit the increased variability to achieve higher predictive accuracy.
-
-### 4. Impact of Graph Size / Pairing Scenarios
-
-- **Results:**  
-  - Comparing different pairing strategies, the "random pair" scenario achieved the highest accuracy (approximately 0.820 ± 0.005 on NCI109 and 0.819 ± 0.004 on NCI1).
-  - Other scenarios—such as mixing graphs forced to be of the same size (with or without shuffling) or self-paired graphs—resulted in noticeably lower accuracies.
-  
-- **Interpretation:**  
-  The random pairing of graphs (with the addition of dummy nodes for alignment) is more effective than enforcing same-size constraints or self-pairing. This indicates that preserving the natural variability in graph structure is beneficial for regularization and ultimately leads to improved performance.
-
-## Summary Interpretation Table
-
-| **Aspect**                        | **Key Findings / Interpretation**                                                                                                                                                           |
-|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Mixing Ratio Sensitivity**      | ifMixup is robust to various Beta distributions (achieving best performance with Beta(20,1)), whereas MixupGraph’s performance degrades significantly under less conservative ratios.  |
-| **Impact of GNN Depth**           | ifMixup’s accuracy improves with deeper GNN architectures, contrasting with baseline GCN and MixupGraph which suffer performance drops as depth increases.                              |
-| **Node Order Shuffling**          | Excessive node shuffling harms performance in shallow networks; however, with increased depth (e.g., 16 layers), frequent shuffling enhances accuracy by providing greater input variety. |
-| **Graph Size / Pairing Strategy** | Random pairing of graphs with dummy node alignment yields superior performance compared to forcing same-size pairings or self-pairing, underscoring the benefit of preserving natural structural variability. |
 
 ---
 
 ## Hyperparameters used for ifMixup (and related methods)
 
-| **Hyperparameter**                | **Short Description**                                                    | **Options / Range**                                 |
-|-----------------------------------|--------------------------------------------------------------------------|-----------------------------------------------------|
-| **Mixing Ratio (λ)**              | Weight for linear interpolation between two graphs                       | Sampled from Beta: Beta(1,1), Beta(2,2), Beta(5,1), Beta(10,1), Beta(20,1) (λ ∈ (0,1)) |
-| **Initial Learning Rate**         | Starting step size for the optimizer                                     | {0.01, 0.0005}                                      |
-| **Hidden Unit Size**              | Dimensionality of hidden layers in the GNN                               | {64, 128}                                           |
-| **Batch Size**                    | Number of graph samples per training batch                               | {32, 128}                                           |
-| **Dropout Ratio (after dense layer)** | Probability of dropping units in the dense layer                       | {0, 0.5}                                            |
-| **DropNode / DropEdge Ratio**     | Percentage of nodes/edges randomly removed for augmentation              | {20%, 40%}                                          |
-| **Number of GNN Layers**          | Depth of the Graph Neural Network                                        | {3, 5, 8}                                           |
-
-
+| **Hyperparameter**                | **Short Description**                                         | **Options / Range**                                                                    |
+|-----------------------------------|---------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| **Epochs**                        | The total training iterations.                                | Integer, set to 350                                                                    |
+| **Mixing Ratio (λ)**              | Weight for linear interpolation between two graphs            | Sampled from Beta: Beta(1,1), Beta(2,2), Beta(5,1), Beta(10,1), Beta(20,1) (λ ∈ (0,1)) |
+| **Initial Learning Rate**         | Starting step size for the optimizer                          | {0.01, 0.0005}                                                                         |
+| **Hidden Unit Size**              | Dimensionality of hidden layers in the GNN                    | {64, 128}                                                                              |
+| **Batch Size**                    | Number of graph samples per training batch                    | {32, 128}                                                                              |
+| **Dropout Ratio (after dense layer)** | Probability of dropping units in the dense layer              | {0, 0.5}                                                                               |
+| **DropNode / DropEdge Ratio**     | Percentage of nodes/edges randomly removed for augmentation   | {20%, 40%}                                                                             |
+| **Number of GNN Layers**          | Depth of the Graph Neural Network                             | {3, 5, 8}                                                                              |
