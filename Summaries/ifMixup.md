@@ -92,10 +92,10 @@ where εk is a learnable parameter."**
 5. **Output:**  
    - Return the mixed graph G̃ = (ṽ, ẽ)
 
-- **Accessible Note:**  
+- **Note:**  
   - The pseudo-code clearly outlines the steps to create a synthetic graph that is a linear interpolation of two input graphs. This process is computationally light and straightforward.
 
-### 5. Information Lossless Property
+### 5. Lemmas
 
 The paper claims that the ifMixup process is **information lossless**—meaning the mixed graph contains all the information from the original graph pair.
 
@@ -103,39 +103,22 @@ The paper claims that the ifMixup process is **information lossless**—meaning 
 
 > **"Lemma 0.1 (Edge Invertibility). Let ẽ be constructed using Equation 6 with λ ≠ 0.5. ... from the mixed edge representation ẽ, we can always recover eA and eB ..."**  
 
-- **Accessible Note:**  
+- **Note:**  
   - **Key Idea:** Provided that the mixing ratio λ is not exactly 0.5, one can uniquely determine the original edge matrices (and hence the graph topology) from the mixed matrix ẽ.
 
 #### b. Node Feature Invertibility (Lemma 0.2)
 
 > **"Lemma 0.2 (Node Feature Invertibility). Suppose that the node feature vectors for all instances take values from a finite set V ⊂ ℝᵈ and that V is linearly independent. ... there is exactly one solution for this equation."**  
 
-- **Accessible Note:**  
+- **Note:**  
   - **Key Idea:** Under the assumption that the node features come from a linearly independent set, the original node feature matrices can be uniquely recovered from the mixed node feature matrix ṽ.
 
 #### c. Intrusion-Freeness (Theorem 0.3)
 
 > **"Theorem 0.3 (Intrusion-Freeness). ... Then for any mixed node-featured graph G̃ constructed using Equations 6 and 7, the two original node-featured graphs GA and GB can be uniquely recovered."**  
 
-- **Accessible Note:**  
+- **Note:**  
   - **Conclusion:** The mixing process (ifMixup) does not cause **manifold intrusion** (i.e., ambiguity where a mixed graph could represent more than one distinct pair of original graphs). This guarantees that the synthetic data preserve all original information without conflict.
-
-## Summary
-
-- **Definitions & Formulas:**  
-  - A graph is represented as (v, e) with node features *v* and binary edge matrix *e*.  
-  - Mixed graph formulas:  
-    - *ẽ = λeA + (1−λ)eB*  
-    - *ṽ = λvA + (1−λ)vB*
-
-- **Algorithm:**  
-  - The pseudo-code (Algorithm 1) details the steps: align graph sizes using dummy nodes, then perform linear interpolation for both node features and edges.
-
-- **Integration into GNNs:**  
-  - Mixed graphs have soft edge weights. GCNs and GINs are modified to accommodate these weights in their message-passing schemes (see Equations 8 and 9).
-
-- **Information Preservation:**  
-  - Through Lemma 0.1 and Lemma 0.2 (and Theorem 0.3), the authors prove that the mixing process is information lossless. This ensures that the synthetic graphs fully capture the information from the original graph pairs.
 
 ---
 
