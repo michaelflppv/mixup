@@ -122,6 +122,16 @@ The paper claims that the ifMixup process is **information lossless**—meaning 
 
 ---
 
+### Advantages and Disadvantages of ifMixup
+
+| Advantages | Disadvantages |
+|------------|---------------|
+| - **Simplicity and Effectiveness:** “We present a simple and yet effective interpolation‐based regularization technique...”  | - **Arbitrary Node Alignment:** “ifMixup first adds dummy nodes to make two graphs have the same input size …” leads to using an arbitrary node order that may not preserve critical topological structures. |
+| - **Information Lossless Property:** The paper proves that “the mixed graph preserves all the information from its original graph pair, namely the mixing process is information lossless” under a mild assumption.  | - **Task Limitation:** ifMixup is focused on graph‐level classification, and “it becomes more challenging to guarantee information losses for mixed graphs on the node level,” which may limit its extension to node classification tasks. |
+| - **Improved Regularization and Generalization:** By directly interpolating both node feature matrices and edge (adjacency) matrices, ifMixup effectively regularizes GNN training to boost predictive accuracy.  | - **Graph Size Distribution Shift:** When padding smaller graphs with dummy nodes so that both graphs have the same size, the resulting mixed graph’s size equals that of the larger input, which can lead to a distribution shift that might affect performance.  |
+
+---
+
 ## Experiments
 
 ### 1. Overall Graph Classification Performance
