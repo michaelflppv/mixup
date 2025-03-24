@@ -161,15 +161,15 @@ Baselines include DropEdge, DropNode, M-Mixup, ifMixup, and G-Mixup. FGWMixup (a
 
 ## Hyperparameters
 
-| **Hyperparameter**           | **Short Description**                                                                                          | **Options / Range**                                                                                           |
-|------------------------------|----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| mixup_alpha (α)              | Balances the cost between node feature alignment and graph structure alignment in the FGW distance.            | [0, 1]; tested values: 0.05, 0.5, 0.95, 1.0 (best empirical value: 0.95)                                       |
+| **Hyperparameter**           | **Short Description**                                                                                          | **Options / Range**                                                                                             |
+|------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| mixup_alpha (α)              | Balances the cost between node feature alignment and graph structure alignment in the FGW distance.            | [0, 1]; tested values: 0.05, 0.5, 0.95, 1.0 (best empirical value: 0.95)                                        |
 | mixup_ratio (λ)              | Mixing ratio for blending two graphs, determining the contribution of each source graph.                         | [0, 1] (sampled from a Beta(k, k) distribution)                                                                 |
-| Beta parameter (k)           | Controls the shape of the Beta distribution used for sampling the mixup ratio (λ).                                | k > 0 (typical value not explicitly specified; commonly set around 1.0)                                          |
+| Beta parameter (k)           | Controls the shape of the Beta distribution used for sampling the mixup ratio (λ).                                | k > 0 (typical value not explicitly specified (best empirical value Beta(0.2, 0.2))                             |
 | step_size (γ)                | Step size for the Mirror Descent updates in the FGW solver.                                                    | Positive real number (a small value; specific range not provided)                                               |
-| mixup_graph_size_strategy    | Determines how the synthetic graph’s node count is set (affecting data diversity and size distribution handling). | Categorical: "adaptive" (weighted average of source sizes) or "fixed" (e.g., 0.5× median, median, or 2× median)    |
-| max_outer_iterations         | Maximum number of iterations in the outer loop of the Block Coordinate Descent (BCD) algorithm.                  | Integer (not explicitly specified in the paper)                                                                |
-| max_inner_iterations         | Maximum number of iterations in the inner loop of the FGW solver for computing optimal couplings.                | Integer (not explicitly specified in the paper)                                                                |
+| mixup_graph_size_strategy    | Determines how the synthetic graph’s node count is set (affecting data diversity and size distribution handling). | Categorical: "adaptive" (weighted average of source sizes) or "fixed" (e.g., 0.5× median, median, or 2× median) |
+| max_outer_iterations         | Maximum number of iterations in the outer loop of the Block Coordinate Descent (BCD) algorithm.                  | Integer (no range provided, set to 200)                                                                         |
+| max_inner_iterations         | Maximum number of iterations in the inner loop of the FGW solver for computing optimal couplings.                | Integer (no range provided, set to 300)                                                                         |
 
 These hyperparameters collectively govern how FGWMixup blends graph signals and structures, how the optimal transport problem is solved, and ultimately how the synthetic graphs are generated.
 
