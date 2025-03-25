@@ -40,27 +40,27 @@
 
 **Gromov–Wasserstein (GW) Space and Distance:**  
 - **GW Distance:**  
-  For graphs \(G_1=(A_1, \mu_1)\) and \(G_2=(A_2, \mu_2)\), the \(p\)-GW distance is defined as:
+  For graphs $G_1=(A_1, \mu_1)$ and $G_2=(A_2, \mu_2)$, the $p$-GW distance is defined as:
   $$
   d_{GW}(G_1, G_2) = \min_{T \in \Pi(\mu_1, \mu_2)} \left( \sum_{i,j,k,l} \left| A_1(i,j) - A_2(k,l) \right|^p \, T(i,k)\, T(j,l) \right)^{1/p}.
   $$
 - **GW Geodesics:**  
-  By considering an equivalence relation (i.e., \(G_1 \sim G_2\) if \(d_{GW}(G_1,G_2)=0\)), the induced metric on the space of equivalence classes is defined as:
+  By considering an equivalence relation (i.e., $G_1 \sim G_2$ if $d_{GW}(G_1,G_2)=0$), the induced metric on the space of equivalence classes is defined as:
   $$
   d^*_{GW}(\mathcal{J}_{G_1}, \mathcal{J}_{G_2}) = d_{GW}(G_1, G_2).
   $$
 - **Equivalence-Preserving Transformations:**  
-  A transformation \(\Gamma\) is equivalence-preserving if for all \(G\) in the graph space, \(G \sim \Gamma(G)\).
+  A transformation $\Gamma$ is equivalence-preserving if for all $G$ in the graph space, $G \sim \Gamma(G)$.
 
 **Geodesic Graph Mixup Problem:**  
 - **Sample–Label Consistency:**  
-  A mixup sample \(\tilde{G}(\lambda)\) and label \(\tilde{y}(\lambda)\) are consistent if the relative distances in the GW space match the interpolation weights.
+  A mixup sample $\tilde{G}(\lambda)$ and label $\tilde{y}(\lambda)$ are consistent if the relative distances in the GW space match the interpolation weights.
 - **Formal Definition:**  
   The geodesic graph mixup problem seeks a GW geodesic:
   $$
   \gamma(\lambda) = \mathcal{J}_{\tilde{G}(\lambda)}
   $$
-  connecting the equivalence classes \(\mathcal{J}_{G_1}\) and \(\mathcal{J}_{G_2}\) so that the interpolation is consistent with the underlying structure and labels.
+  connecting the equivalence classes $\mathcal{J}_{G_1}$ and $\mathcal{J}_{G_2}$ so that the interpolation is consistent with the underlying structure and labels.
 
 ---
 
@@ -81,9 +81,9 @@ The methodology is divided into two major parts:
     \tilde{\mu}(\lambda) &= \operatorname{vec}\big(\operatorname{OT}(G_1, G_2)\big),
     \end{aligned}
     $$
-    where \(\operatorname{OT}(G_1,G_2)\) is the optimal transport coupling.
+    where $\operatorname{OT}(G_1,G_2)$ is the optimal transport coupling.
   - **Equivalence-Preserving Transformation:**  
-    Linear transformations \(P_1\) and \(P_2\) (via Kronecker products) are applied to obtain well-aligned transformed graphs \(\tilde{G}_1\) and \(\tilde{G}_2\).
+    Linear transformations $P_1$ and $P_2$ (via Kronecker products) are applied to obtain well-aligned transformed graphs $\tilde{G}_1$ and $\tilde{G}_2$.
   - **Final Interpolation:**  
     The mixup graph and its label are obtained by:
     $$
@@ -100,14 +100,14 @@ The methodology is divided into two major parts:
 ### 3.2 Accelerating Mixup on Approximate GW Geodesics
 
 - **Challenge of High Dimensionality:**  
-  Exact GW geodesics operate in a space with dimension proportional to \(n_1 n_2\), which is computationally prohibitive.
+  Exact GW geodesics operate in a space with dimension proportional to $n_1 n_2$, which is computationally prohibitive.
 - **Low-Rank Approximation:**  
-  A hyperparameter \(r\) (with \(r \leq n\)) is introduced to reduce dimensionality.
+  A hyperparameter $r$ (with $r \leq n$) is introduced to reduce dimensionality.
   - New variables:
     $$
     Q_1 = P_1 \operatorname{diag}(g), \quad Q_2 = P_2 \operatorname{diag}(g),
     $$
-    with \(g \in \Delta_r\).
+    with $g \in \Delta_r$.
 - **Reformulated Optimization:**  
   The problem becomes:
   $$
@@ -117,20 +117,20 @@ The methodology is divided into two major parts:
   \end{aligned}
   $$
 - **Optimization via Mirror Descent:**  
-  A mirror descent scheme with generalized KL divergence and Dykstra’s algorithm is used to update \(Q_1\), \(Q_2\), and \(g\) iteratively.
+  A mirror descent scheme with generalized KL divergence and Dykstra’s algorithm is used to update $Q_1$, $Q_2$, and $g$ iteratively.
 - **Transformation Recovery and Final Output:**  
-  Once convergence is reached, the transformation matrices \(P_1\) and \(P_2\) are recovered by column normalization of \(Q_1\) and \(Q_2\). The final mixup graph is then computed similarly to the exact case, but with significantly reduced computational cost.
+  Once convergence is reached, the transformation matrices $P_1$ and $P_2$ are recovered by column normalization of $Q_1$ and $Q_2$. The final mixup graph is then computed similarly to the exact case, but with significantly reduced computational cost.
 
 ---
 
 ## 4. Advantages and Disadvantages
 
-| **Advantages**                                                                                                              | **Disadvantages / Limitations**                                                                                                                           |
-|-----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Principled Geodesic Interpolation:** Mixup samples are generated along the GW geodesics, ensuring sample–label consistency. | **Computational Overhead in Exact Formulation:** Exact GW geodesics operate in very high-dimensional spaces, which is computationally expensive.          |
-| **Equivalence-Preserving Transformations:** Aligns graph structures so that interpolation is meaningful in the GW space.        | **Approximation Trade-off:** The low-rank approximation introduces a hyperparameter \(r\) that must be tuned to balance accuracy and efficiency.          |
-| **Accelerated Computation:** The proposed mirror descent scheme with Dykstra’s algorithm reduces complexity from \(O(n^4)\) to \(O(n^2r)\). | **Model Complexity:** The overall method involves multiple stages (transformation, optimization, projection), increasing implementation complexity.     |
-| **Theoretical Guarantees:** The paper provides proofs ensuring that the interpolated samples truly lie on the GW geodesics.         | **Applicability:** Primarily validated for graph classification; extending the method to other graph tasks may require additional adaptation.             |
+| **Advantages**                                                                                                                          | **Disadvantages / Limitations**                                                                                                                     |
+|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Principled Geodesic Interpolation:** Mixup samples are generated along the GW geodesics, ensuring sample–label consistency.           | **Computational Overhead in Exact Formulation:** Exact GW geodesics operate in very high-dimensional spaces, which is computationally expensive.    |
+| **Equivalence-Preserving Transformations:** Aligns graph structures so that interpolation is meaningful in the GW space.                | **Approximation Trade-off:** The low-rank approximation introduces a hyperparameter $r$ that must be tuned to balance accuracy and efficiency.      |
+| **Accelerated Computation:** The proposed mirror descent scheme with Dykstra’s algorithm reduces complexity from $O(n^4)$ to $O(n^2r)$. | **Model Complexity:** The overall method involves multiple stages (transformation, optimization, projection), increasing implementation complexity. |
+| **Theoretical Guarantees:** The paper provides proofs ensuring that the interpolated samples truly lie on the GW geodesics.             | **Applicability:** Primarily validated for graph classification; extending the method to other graph tasks may require additional adaptation.       |
 
 ---
 
@@ -139,17 +139,17 @@ The methodology is divided into two major parts:
 ## 4.1 Understanding the GEOMIX Process
 
 - **Visualization of Mixup Graphs:**  
-  GEOMIX is applied on graphs generated by the Stochastic Block Model (SBM) with varying numbers of blocks (2, 3, 5). Mixup samples are generated with different values of \(\lambda\) (0.2, 0.4, 0.6, 0.8), and it is observed that as \(\lambda\) increases, the mixup graph becomes more similar to \(G_2\).
+  GEOMIX is applied on graphs generated by the Stochastic Block Model (SBM) with varying numbers of blocks (2, 3, 5). Mixup samples are generated with different values of $\lambda$ (0.2, 0.4, 0.6, 0.8), and it is observed that as $\lambda$ increases, the mixup graph becomes more similar to $G_2$.
 
 - **Sample–Label Consistency Evaluation:**  
   The ratio 
-  \[
+  $$
   \frac{d_{GW}(\tilde{G}(\lambda), G_1)}{d_{GW}(\tilde{G}(\lambda), G_2)}
-  \]
+  $$
   is compared with 
-  \[
+  $$
   \frac{\|\tilde{y}(\lambda) - y_2\|}{\|\tilde{y}(\lambda) - y_1\|}.
-  \]
+  $$
   GEOMIX achieves a Pearson correlation coefficient of 0.91, which is significantly higher than that of G-Mixup (0.25) and FGWMixup (0.71).  
   Additionally, TSNE visualization of embeddings (using a GCN) on IMDB-B and MUTAG shows that mixup samples lie on a geodesic connecting the original graph pairs.
 
@@ -183,34 +183,34 @@ The methodology is divided into two major parts:
 ## 4.4 Effect of Mixup Graph Size
 
 - **Analysis:**  
-  The performance of GEOMIX is studied with varying mixup graph sizes (hyperparameter \(r\)).  
-  - **Accuracy:** Classification accuracy fluctuates within ±3% across different values of \(r\), indicating robust performance.
-  - **Efficiency:** The running time increases approximately linearly with \(r\).
-  - **Transformation Quality:** Visualizations of the learned transformation matrices show that as \(r\) increases, the matrices become sparser, approximating the exact GW geodesic solution.
+  The performance of GEOMIX is studied with varying mixup graph sizes (hyperparameter $r$).  
+  - **Accuracy:** Classification accuracy fluctuates within ±3% across different values of $r$, indicating robust performance.
+  - **Efficiency:** The running time increases approximately linearly with $r$.
+  - **Transformation Quality:** Visualizations of the learned transformation matrices show that as $r$ increases, the matrices become sparser, approximating the exact GW geodesic solution.
 
 ---
 
 ## Summary of Experimental Interpretations
 
-| **Aspect**                         | **Key Findings**                                                                                                        | **Interpretation**                                                                                      |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| **Mixup Graph Visualization**      | GEOMIX produces mixup graphs that smoothly interpolate between \(G_1\) and \(G_2\) as \(\lambda\) varies.             | The method effectively captures the continuous transition (geodesic) in the joint GW space.              |
+| **Aspect**                         | **Key Findings**                                                                                                                | **Interpretation**                                                                                      |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| **Mixup Graph Visualization**      | GEOMIX produces mixup graphs that smoothly interpolate between $G_1$ and $G_2$ as $\lambda$ varies.                             | The method effectively captures the continuous transition (geodesic) in the joint GW space.              |
 | **Sample–Label Consistency**       | Pearson coefficient of 0.91 between GW distance ratios and label differences, outperforming G-Mixup (0.25) and FGWMixup (0.71). | GEOMIX ensures that the interpolated graphs maintain consistency between the sample features and labels.  |
-| **Generalization of GNNs**         | Outperforms competitors in 8/10 settings with up to 6.6% improvement, especially on datasets with fewer, larger graphs.    | GEOMIX enhances GNN generalization by providing diverse and representative augmented training samples.   |
-| **Robustness to Corruption**       | Achieves up to 4.7% improvement against topology corruption and 1.8% against label corruption over best competitors.       | The geodesic mixup strategy reduces overfitting and improves robustness against noisy inputs.            |
-| **Mixup Graph Size Effect**        | Accuracy remains stable (±3% fluctuation) with varying \(r\); running time scales linearly with \(r\).                    | The approach effectively compresses redundant/noisy graph information while maintaining essential structure. |
+| **Generalization of GNNs**         | Outperforms competitors in 8/10 settings with up to 6.6% improvement, especially on datasets with fewer, larger graphs.         | GEOMIX enhances GNN generalization by providing diverse and representative augmented training samples.   |
+| **Robustness to Corruption**       | Achieves up to 4.7% improvement against topology corruption and 1.8% against label corruption over best competitors.            | The geodesic mixup strategy reduces overfitting and improves robustness against noisy inputs.            |
+| **Mixup Graph Size Effect**        | Accuracy remains stable (±3% fluctuation) with varying $r$; running time scales linearly with $r$.                              | The approach effectively compresses redundant/noisy graph information while maintaining essential structure. |
 
 ---
 
 ## Hyperparameters
 
-| Hyperparameter             | Short Description                                                                  | Options / Range                                           |
-|----------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| Mixup Ratio (\(\lambda\))  | Interpolation weight determining the contribution of each input graph            | \([0, 1]\); typically sampled from a Beta distribution    |
-| Mixup Graph Size (\(r\))   | Controls the degree of low-rank approximation for the mixup graph (i.e., output size) | \(r \in \mathbb{Z}\) with \(r \leq n\) (e.g., small integer values such as 10, 20, etc.)  |
-| Step Size (\(\gamma\))     | Step size used in mirror descent updates for the low-rank GW optimization          | \(\gamma > 0\); a small positive real number              |
-| Number of Iterations (\(T\))| Number of iterations for convergence in the mirror descent (low-rank GW optimization) | \(T \in \mathbb{N}\); chosen based on convergence criteria    |
-| Order of GW Distance (\(p\)) | Exponent in the GW distance calculation                                            | Typically fixed as \(p = 2\)                              |
+| Hyperparameter             | Short Description                                                                  | Options / Range                                                                      |
+|----------------------------|------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| Mixup Ratio ($\lambda$)    | Interpolation weight determining the contribution of each input graph            | $[0, 1]$; typically sampled from a Beta distribution                                 |
+| Mixup Graph Size $(r$)     | Controls the degree of low-rank approximation for the mixup graph (i.e., output size) | $r \in \mathbb{Z}$ with $r \leq n$ (e.g., small integer values such as 10, 20, etc.) |
+| Step Size $(\gamma$)       | Step size used in mirror descent updates for the low-rank GW optimization          | $\gamma > 0$; a small positive real number                                           |
+| Number of Iterations $(T$) | Number of iterations for convergence in the mirror descent (low-rank GW optimization) | $T \in \mathbb{N}$; chosen based on convergence criteria                             |
+| Order of GW Distance $(p$) | Exponent in the GW distance calculation                                            | Typically fixed as $p = 2$                                                           |
 
 # Extracted Key Information from Related Work and Appendices
 
@@ -230,28 +230,28 @@ The methodology is divided into two major parts:
 
 ### Appendix A: Theoretical Proofs and Derivations
 
-| **Key Topic**                         | **Extracted Information**                                                                                                                                                               | **Importance**                                                                                       |
-|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Proof of Theorem 3.1**                | Demonstrates that the transformed graphs (\(\tilde{G}_1\) and \(\tilde{G}_2\)) remain in the equivalence classes of the original graphs and that linear interpolation yields a valid GW geodesic. | Provides the theoretical guarantee that mixup samples lie on the correct geodesic, ensuring sample–label consistency. |
-| **Reformulation of GW Geodesics**       | Derives an optimization formulation for GW geodesics that underpins the interpolation process in GEOMIX.                                                                                | Establishes a rigorous mathematical framework for the geodesic mixup operation.                        |
+| **Key Topic**                         | **Extracted Information**                                                                                                                                                                     | **Importance**                                                                                       |
+|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **Proof of Theorem 3.1**                | Demonstrates that the transformed graphs $(\tilde{G}_1$ and $\tilde{G}_2$) remain in the equivalence classes of the original graphs and that linear interpolation yields a valid GW geodesic. | Provides the theoretical guarantee that mixup samples lie on the correct geodesic, ensuring sample–label consistency. |
+| **Reformulation of GW Geodesics**       | Derives an optimization formulation for GW geodesics that underpins the interpolation process in GEOMIX.                                                                                      | Establishes a rigorous mathematical framework for the geodesic mixup operation.                        |
 
 ---
 
 ### Appendix B: Algorithm Details and Pseudocode
 
-| **Key Component**                          | **Extracted Information**                                                                                                                                                                 | **Importance**                                                                                          |
-|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| **Accelerated GEOMIX Pseudocode**             | Full pseudocode is provided for the accelerated GEOMIX algorithm.<br>- Describes mirror descent updates using a generalized KL divergence.<br>- Details the use of Dykstra’s algorithm for projection.  | Enables reproducibility and deep understanding of the low-rank optimization process that accelerates GEOMIX. |
-| **Variable and Constraint Reformulation**    | Introduces variables \(Q_1 = P_1\,\operatorname{diag}(g)\) and \(Q_2 = P_2\,\operatorname{diag}(g)\), and reformulates the problem to a low-dimensional setting controlled by \(r\).                   | Reduces computational complexity from exact \(O(n^4)\) to approximate \(O(n^2r)\) while preserving accuracy. |
+| **Key Component**                          | **Extracted Information**                                                                                                                                                                              | **Importance**                                                                                               |
+|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| **Accelerated GEOMIX Pseudocode**             | Full pseudocode is provided for the accelerated GEOMIX algorithm.<br>- Describes mirror descent updates using a generalized KL divergence.<br>- Details the use of Dykstra’s algorithm for projection. | Enables reproducibility and deep understanding of the low-rank optimization process that accelerates GEOMIX. |
+| **Variable and Constraint Reformulation**    | Introduces variables $Q_1 = P_1\,\operatorname{diag}(g)$ and $Q_2 = P_2\,\operatorname{diag}(g)$, and reformulates the problem to a low-dimensional setting controlled by $r$.                         | Reduces computational complexity from exact $O(n^4)$ to approximate $O(n^2r)$ while preserving accuracy.     |
 
 ---
 
 ### Appendix C: Additional Experimental Visualizations
 
-| **Visualizations**                             | **Extracted Information**                                                                                                                                                                   | **Importance**                                                                                             |
-|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| **TSNE and Embedding Plots**                   | Visualizations (e.g., TSNE plots) demonstrate that GEOMIX-generated samples lie along geodesics connecting original graphs (e.g., on IMDB-B and MUTAG datasets).                       | Provides qualitative evidence that GEOMIX preserves the geodesic property and yields consistent sample–label pairs. |
-| **Transformation Matrix Visualizations**       | Shows that the learned transformation matrices become sparser with increased mixup graph size \(r\), indicating convergence to the exact GW geodesic solution.                           | Validates that the equivalence-preserving transformations are effective in aligning graphs for proper mixup.     |
+| **Visualizations**                             | **Extracted Information**                                                                                                                                        | **Importance**                                                                                             |
+|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| **TSNE and Embedding Plots**                   | Visualizations (e.g., TSNE plots) demonstrate that GEOMIX-generated samples lie along geodesics connecting original graphs (e.g., on IMDB-B and MUTAG datasets). | Provides qualitative evidence that GEOMIX preserves the geodesic property and yields consistent sample–label pairs. |
+| **Transformation Matrix Visualizations**       | Shows that the learned transformation matrices become sparser with increased mixup graph size $r$, indicating convergence to the exact GW geodesic solution.     | Validates that the equivalence-preserving transformations are effective in aligning graphs for proper mixup.     |
 
 ---
 
@@ -267,8 +267,8 @@ The methodology is divided into two major parts:
 
 ### Appendix E: Additional Analyses and Sensitivity Studies
 
-| **Analysis Area**                         | **Extracted Information**                                                                                                                                                                          | **Importance**                                                                                       |
-|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Hyperparameter Sensitivity**            | Studies the impact of key hyperparameters such as mixup graph size \(r\) and step size \(\gamma\) on GEOMIX’s performance and efficiency.                                                        | Guides the tuning of the method for optimal trade-offs between computational cost and accuracy.       |
-| **Robustness Tests and Ablation Studies**   | Provides further robustness evaluations (e.g., under topology and label corruptions) and ablation studies that isolate the effects of different components of GEOMIX.                                | Demonstrates the stability and robustness of GEOMIX across various conditions and reinforces its benefits. |
-| **Efficiency and Time Complexity Analyses** | Presents detailed analyses showing that the accelerated GEOMIX achieves a complexity of \(O(n^2r)\) compared to the much higher cost of exact GW geodesics, with experimental runtime results supporting this claim. | Validates that the low-rank approximation yields significant efficiency gains with minimal loss of effectiveness.  |
+| **Analysis Area**                         | **Extracted Information**                                                                                                                                                                                          | **Importance**                                                                                       |
+|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| **Hyperparameter Sensitivity**            | Studies the impact of key hyperparameters such as mixup graph size $r$ and step size $\gamma$ on GEOMIX’s performance and efficiency.                                                                              | Guides the tuning of the method for optimal trade-offs between computational cost and accuracy.       |
+| **Robustness Tests and Ablation Studies**   | Provides further robustness evaluations (e.g., under topology and label corruptions) and ablation studies that isolate the effects of different components of GEOMIX.                                              | Demonstrates the stability and robustness of GEOMIX across various conditions and reinforces its benefits. |
+| **Efficiency and Time Complexity Analyses** | Presents detailed analyses showing that the accelerated GEOMIX achieves a complexity of $O(n^2r)$ compared to the much higher cost of exact GW geodesics, with experimental runtime results supporting this claim. | Validates that the low-rank approximation yields significant efficiency gains with minimal loss of effectiveness.  |
