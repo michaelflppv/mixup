@@ -203,14 +203,13 @@ The methodology is divided into two major parts:
 ---
 
 ## Hyperparameters
-
-| Hyperparameter             | Short Description                                                                  | Options / Range                                                                      |
-|----------------------------|------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| Mixup Ratio ($\lambda$)    | Interpolation weight determining the contribution of each input graph            | $[0, 1]$; typically sampled from a Beta distribution                                 |
-| Mixup Graph Size $(r$)     | Controls the degree of low-rank approximation for the mixup graph (i.e., output size) | $r \in \mathbb{Z}$ with $r \leq n$ (e.g., small integer values such as 10, 20, etc.) |
-| Step Size $(\gamma$)       | Step size used in mirror descent updates for the low-rank GW optimization          | $\gamma > 0$; a small positive real number                                           |
-| Number of Iterations $(T$) | Number of iterations for convergence in the mirror descent (low-rank GW optimization) | $T \in \mathbb{N}$; chosen based on convergence criteria                             |
-| Order of GW Distance $(p$) | Exponent in the GW distance calculation                                            | Typically fixed as $p = 2$                                                           |
+| Hyperparameter             | Short Description                                                                  | Options / Range                                                                                                     |
+|----------------------------|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| Mixup Ratio ($\lambda$)    | Interpolation weight determining the contribution of each input graph            | $\lambda \in [0,1]$; typically sampled from a Beta$(k,k)$ distribution (e.g., with $k$ chosen from $\{0.5, 1, 2\}$) |
+| Mixup Graph Size ($r$)     | Controls the degree of low-rank approximation for the mixup graph (i.e., output size)| $r \in \mathbb{Z}$ with $r \leq n$; in experiments, $r$ is chosen from small integers (e.g., 10, 20, …, 100)        |
+| Step Size ($\gamma$)       | Step size used in mirror descent updates for the low-rank FGW optimization          | $\gamma > 0$; a small positive real number (typically selected via grid search, e.g., in the range 0.001–0.1)       |
+| Number of Iterations ($T$) | Number of iterations for convergence in the mirror descent (low-rank FGW optimization) | $T \in \mathbb{N}$; chosen based on convergence criteria (set between 50 and 200 iterations in practice)            |
+| Order of GW Distance ($p$) | Exponent in the GW distance calculation                                            | Typically fixed as $p = 2$                                                                                          |
 
 # Extracted Key Information from Related Work and Appendices
 
