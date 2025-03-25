@@ -34,7 +34,7 @@ VRM approximates the unknown data distribution by defining a vicinity (or neighb
 
 - **Example (Gaussian Vicinity):**  
   $$ \nu(\tilde{x}, \tilde{y} \mid x_i, y_i) = \mathcal{N}(\tilde{x} - x_i, \sigma^2) \, \delta(\tilde{y} = y_i) $$  
-  > "Chapelle et al. (2000) considered Gaussian vicinities \(\nu(\tilde{x}, \tilde{y} \mid x_i, y_i) = \mathcal{N}(\tilde{x} - x_i, \sigma^2) \, \delta(\tilde{y} = y_i)\)."  
+  > "Chapelle et al. (2000) considered Gaussian vicinities $\nu(\tilde{x}, \tilde{y} \mid x_i, y_i) = \mathcal{N}(\tilde{x} - x_i, \sigma^2) \, \delta(\tilde{y} = y_i)$."  
 
 | Advantages | Disadvantages |
 |------------|---------------|
@@ -45,7 +45,7 @@ VRM approximates the unknown data distribution by defining a vicinity (or neighb
 ### Definitions
 
 > [!NOTE]  
-> The classic VC-dimension bounds provide a way to quantify how the generalization error (true risk) of a hypothesis \( h \) in a hypothesis class \(\mathcal{H}\) relates to its empirical error, taking into account the complexity of \(\mathcal{H}\) (measured by its VC-dimension \( d \)) and the number of training samples \( n \).
+> The classic VC-dimension bounds provide a way to quantify how the generalization error (true risk) of a hypothesis $ h $ in a hypothesis class $\mathcal{H}$ relates to its empirical error, taking into account the complexity of $\mathcal{H}$ (measured by its VC-dimension $ d $) and the number of training samples $ n $.
 
 > [!NOTE]  
 > An adversarial example is an input that has been slightly and intentionally perturbed to fool a model into making a wrong prediction, even though the change is imperceptible to humans.
