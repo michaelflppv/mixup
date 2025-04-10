@@ -1,0 +1,10 @@
+<map id="src/methods/branch_tight.ipp" name="src/methods/branch_tight.ipp">
+<area shape="rect" id="node1" title="ged::BranchTight class definition." alt="" coords="434,5,585,47"/>
+<area shape="rect" id="node2" href="$all__methods_8hpp.html" title="Includes all methods to enable mutual usability while avoiding circular dependencies." alt="" coords="402,95,617,121"/>
+<area shape="rect" id="node3" href="$ged__env_8hpp.html" title="ged::GEDEnv class declaration." alt="" coords="432,169,587,196"/>
+<area shape="rect" id="node4" href="$ged__env_8gxl_8cpp.html" title="ged::GEDEnv&lt;ged::GXLUserNodeID, ged::GXLLabel, ged::GXLLabel&gt; template instantiation." alt="" coords="5,251,184,278"/>
+<area shape="rect" id="node5" href="$learn__ring__params_8cpp.html" title="Learn the parameters of the method ged::Ring for different datasets." alt="" coords="209,244,383,285"/>
+<area shape="rect" id="node6" href="$learn__subgraph__depths_8cpp.html" title="Learn the parameters of the method ged::Subgraph for different datasets." alt="" coords="407,244,611,285"/>
+<area shape="rect" id="node7" href="$learn__walks__depths_8cpp.html" title="Learn the parameters of the method ged::Walks for different datasets." alt="" coords="635,244,818,285"/>
+<area shape="rect" id="node8" href="$test__lsape__based__methods_8cpp.html" title="Tests performance of derived classes of ged::LSAPEBasedMethod." alt="" coords="842,244,1073,285"/>
+</map>

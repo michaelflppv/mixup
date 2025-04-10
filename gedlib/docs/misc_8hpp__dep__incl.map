@@ -1,0 +1,12 @@
+<map id="src/util/misc.hpp" name="src/util/misc.hpp">
+<area shape="rect" id="node1" title="Declaration of miscellaneous utility functions." alt="" coords="551,5,681,32"/>
+<area shape="rect" id="node2" href="$ged__method_8hpp.html" title="ged::GEDMethod class declaration." alt="" coords="402,80,617,107"/>
+<area shape="rect" id="node10" href="$ibd_8hpp.html" title="ged::IBD class declaration." alt="" coords="641,80,804,107"/>
+<area shape="rect" id="node3" href="$all__methods_8hpp.html" title="Includes all methods to enable mutual usability while avoiding circular dependencies." alt="" coords="402,155,617,181"/>
+<area shape="rect" id="node4" href="$ged__env_8hpp.html" title="ged::GEDEnv class declaration." alt="" coords="432,229,587,256"/>
+<area shape="rect" id="node5" href="$ged__env_8gxl_8cpp.html" title="ged::GEDEnv&lt;ged::GXLUserNodeID, ged::GXLLabel, ged::GXLLabel&gt; template instantiation." alt="" coords="5,311,184,338"/>
+<area shape="rect" id="node6" href="$learn__ring__params_8cpp.html" title="Learn the parameters of the method ged::Ring for different datasets." alt="" coords="209,304,383,345"/>
+<area shape="rect" id="node7" href="$learn__subgraph__depths_8cpp.html" title="Learn the parameters of the method ged::Subgraph for different datasets." alt="" coords="407,304,611,345"/>
+<area shape="rect" id="node8" href="$learn__walks__depths_8cpp.html" title="Learn the parameters of the method ged::Walks for different datasets." alt="" coords="635,304,818,345"/>
+<area shape="rect" id="node9" href="$test__lsape__based__methods_8cpp.html" title="Tests performance of derived classes of ged::LSAPEBasedMethod." alt="" coords="842,304,1073,345"/>
+</map>

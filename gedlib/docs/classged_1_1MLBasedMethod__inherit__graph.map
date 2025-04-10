@@ -1,0 +1,7 @@
+<map id="ged::MLBasedMethod&lt; UserNodeLabel, UserEdgeLabel &gt;" name="ged::MLBasedMethod&lt; UserNodeLabel, UserEdgeLabel &gt;">
+<area shape="rect" id="node1" title="Abstract class for methods that transform GED to LSAPE by using a SVM or a DNN to predict the cost of..." alt="" coords="568,39,824,80"/>
+<area shape="rect" id="node4" href="$classged_1_1BipartiteML.html" title="Uses characteristics of an LSAPE instance for defining feature vectors for node edit operations." alt="" coords="878,5,1086,47"/>
+<area shape="rect" id="node5" href="$classged_1_1RingML.html" title="Uses ring structures for defining feature vectors for node edit operations." alt="" coords="872,71,1092,112"/>
+<area shape="rect" id="node2" href="$classged_1_1LSAPEBasedMethod.html" title="Abstract class for methods that use lossy transformations to LSAPE for approximating the graph edit d..." alt="" coords="264,39,520,80"/>
+<area shape="rect" id="node3" href="$classged_1_1GEDMethod.html" title="Abstract class for the (suboptimal) computation of the graph edit distance." alt="" coords="5,39,216,80"/>
+</map>

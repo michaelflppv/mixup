@@ -1,0 +1,32 @@
+<map id="ged::GEDMethod&lt; UserNodeLabel, UserEdgeLabel &gt;" name="ged::GEDMethod&lt; UserNodeLabel, UserEdgeLabel &gt;">
+<area shape="rect" id="node1" title="Abstract class for the (suboptimal) computation of the graph edit distance." alt="" coords="5,399,216,440"/>
+<area shape="rect" id="node2" href="$classged_1_1AnchorAwareGED.html" title="Computes the exact graph edit distance for general edit costs." alt="" coords="264,104,520,145"/>
+<area shape="rect" id="node3" href="$classged_1_1BranchCompact.html" title="Computes a lower bound for uniform edit costs." alt="" coords="264,169,520,211"/>
+<area shape="rect" id="node4" href="$classged_1_1BranchTight.html" title="Computes lower and upper bounds for general edit costs." alt="" coords="287,235,497,276"/>
+<area shape="rect" id="node5" href="$classged_1_1HED.html" title="Computes a lower bound for general edit costs." alt="" coords="292,300,492,341"/>
+<area shape="rect" id="node6" href="$classged_1_1Hybrid.html" title="Computes a lower bound for uniform edit costs." alt="" coords="285,365,499,407"/>
+<area shape="rect" id="node7" href="$classged_1_1LSAPEBasedMethod.html" title="Abstract class for methods that use lossy transformations to LSAPE for approximating the graph edit d..." alt="" coords="264,431,520,472"/>
+<area shape="rect" id="node20" href="$classged_1_1LSBasedMethod.html" title="Abstract class for methods that use variants of local search for upper bounding the graph edit distan..." alt="" coords="264,691,520,732"/>
+<area shape="rect" id="node24" href="$classged_1_1MIPBasedMethod.html" title="Abstract class for methods that use mixed integer linear programming for exactly or approximatively c..." alt="" coords="264,855,520,896"/>
+<area shape="rect" id="node29" href="$classged_1_1Partition.html" title="Computes a lower bound for uniform edit costs." alt="" coords="299,920,485,961"/>
+<area shape="rect" id="node30" href="$classged_1_1SimulatedAnnealing.html" title="Uses LSAPE instances to approximate GED via simulated annealing." alt="" coords="264,985,520,1027"/>
+<area shape="rect" id="node8" href="$classged_1_1Bipartite.html" title="Computes lower and upper bounds for general edit costs." alt="" coords="601,5,791,47"/>
+<area shape="rect" id="node9" href="$classged_1_1Branch.html" title="Computes lower and upper bounds for general edit costs." alt="" coords="587,71,805,112"/>
+<area shape="rect" id="node10" href="$classged_1_1BranchFast.html" title="Computes lower and upper bounds for general edit costs." alt="" coords="594,136,798,177"/>
+<area shape="rect" id="node11" href="$classged_1_1BranchUniform.html" title="Computes lower and upper bounds for uniform edit costs." alt="" coords="568,201,824,243"/>
+<area shape="rect" id="node12" href="$classged_1_1MLBasedMethod.html" title="Abstract class for methods that transform GED to LSAPE by using a SVM or a DNN to predict the cost of..." alt="" coords="568,267,824,308"/>
+<area shape="rect" id="node15" href="$classged_1_1Node.html" title="Computes lower and upper bounds for general edit costs." alt="" coords="593,332,799,373"/>
+<area shape="rect" id="node16" href="$classged_1_1Ring.html" title="Computes an upper bound for general edit costs." alt="" coords="595,397,797,439"/>
+<area shape="rect" id="node17" href="$classged_1_1Star.html" title="Computes lower and upper bounds for uniform edit costs." alt="" coords="597,463,795,504"/>
+<area shape="rect" id="node18" href="$classged_1_1Subgraph.html" title="Computes upper bounds for general edit costs." alt="" coords="579,528,813,569"/>
+<area shape="rect" id="node19" href="$classged_1_1Walks.html" title="Computes an upper bound for general edit costs." alt="" coords="591,593,801,635"/>
+<area shape="rect" id="node13" href="$classged_1_1BipartiteML.html" title="Uses characteristics of an LSAPE instance for defining feature vectors for node edit operations." alt="" coords="878,235,1086,276"/>
+<area shape="rect" id="node14" href="$classged_1_1RingML.html" title="Uses ring structures for defining feature vectors for node edit operations." alt="" coords="872,300,1092,341"/>
+<area shape="rect" id="node21" href="$classged_1_1BPBeam.html" title="Computes an upper bound for general edit costs." alt="" coords="583,659,809,700"/>
+<area shape="rect" id="node22" href="$classged_1_1IPFP.html" title="Computes an upper bound for general edit costs." alt="" coords="596,724,796,765"/>
+<area shape="rect" id="node23" href="$classged_1_1Refine.html" title="Computes an upper bound for general edit costs." alt="" coords="589,789,803,831"/>
+<area shape="rect" id="node25" href="$classged_1_1BLPNoEdgeLabels.html" title="Binary linear programming formulation of the graph edit distance without edge labels." alt="" coords="568,855,824,896"/>
+<area shape="rect" id="node26" href="$classged_1_1CompactMIP.html" title="Mixed integer linear programming formulation of the graph edit distance." alt="" coords="589,920,803,961"/>
+<area shape="rect" id="node27" href="$classged_1_1F1.html" title="Mixed integer linear programming formulation of the graph edit distance." alt="" coords="602,985,790,1027"/>
+<area shape="rect" id="node28" href="$classged_1_1F2.html" title="Mixed integer linear programming formulation of the graph edit distance." alt="" coords="602,1051,790,1092"/>
+</map>

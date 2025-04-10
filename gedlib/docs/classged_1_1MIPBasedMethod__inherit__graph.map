@@ -1,0 +1,8 @@
+<map id="ged::MIPBasedMethod&lt; UserNodeLabel, UserEdgeLabel &gt;" name="ged::MIPBasedMethod&lt; UserNodeLabel, UserEdgeLabel &gt;">
+<area shape="rect" id="node1" title="Abstract class for methods that use mixed integer linear programming for exactly or approximatively c..." alt="" coords="264,104,520,145"/>
+<area shape="rect" id="node3" href="$classged_1_1BLPNoEdgeLabels.html" title="Binary linear programming formulation of the graph edit distance without edge labels." alt="" coords="568,5,824,47"/>
+<area shape="rect" id="node4" href="$classged_1_1CompactMIP.html" title="Mixed integer linear programming formulation of the graph edit distance." alt="" coords="589,71,803,112"/>
+<area shape="rect" id="node5" href="$classged_1_1F1.html" title="Mixed integer linear programming formulation of the graph edit distance." alt="" coords="602,136,790,177"/>
+<area shape="rect" id="node6" href="$classged_1_1F2.html" title="Mixed integer linear programming formulation of the graph edit distance." alt="" coords="602,201,790,243"/>
+<area shape="rect" id="node2" href="$classged_1_1GEDMethod.html" title="Abstract class for the (suboptimal) computation of the graph edit distance." alt="" coords="5,104,216,145"/>
+</map>

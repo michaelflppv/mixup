@@ -1,0 +1,13 @@
+<map id="ged::EditCosts&lt; UserNodeLabel, UserEdgeLabel &gt;" name="ged::EditCosts&lt; UserNodeLabel, UserEdgeLabel &gt;">
+<area shape="rect" id="node1" title="Abstract class for defining edit cost functions." alt="" coords="5,300,200,341"/>
+<area shape="rect" id="node2" href="$classged_1_1CHEM1.html" title="Edit cost functions for chemical graphs such as the ones contained in the datasets Mutagenicity,..." alt="" coords="254,5,473,47"/>
+<area shape="rect" id="node3" href="$classged_1_1CHEM2.html" title="Edit cost functions for chemical graphs such as the ones contained in the datasets Mutagenicity,..." alt="" coords="254,71,473,112"/>
+<area shape="rect" id="node4" href="$classged_1_1CMU.html" title="Edit costs for graphs contain in CMU dataset." alt="" coords="262,136,465,177"/>
+<area shape="rect" id="node5" href="$classged_1_1Constant.html" title="Implements constant edit cost functions." alt="" coords="248,201,479,243"/>
+<area shape="rect" id="node6" href="$classged_1_1Fingerprint.html" title="Edit costs for graphs contained in Fingerprint dataset." alt="" coords="262,267,465,308"/>
+<area shape="rect" id="node7" href="$classged_1_1GREC1.html" title="Edit cost functions for the dataset GREC." alt="" coords="255,332,471,373"/>
+<area shape="rect" id="node8" href="$classged_1_1GREC2.html" title="Edit cost functions for the dataset GREC." alt="" coords="255,397,471,439"/>
+<area shape="rect" id="node9" href="$classged_1_1IBD.html" title="Edit cost functions for IBD graphs." alt="" coords="266,463,461,504"/>
+<area shape="rect" id="node10" href="$classged_1_1Letter.html" title="Edit costs for graphs contained in Letter datasets." alt="" coords="258,528,469,569"/>
+<area shape="rect" id="node11" href="$classged_1_1Protein.html" title="Edit costs for graphs contained in Protein dataset." alt="" coords="254,593,473,635"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="src/edit_costs/letter.ipp" name="src/edit_costs/letter.ipp">
+<area shape="rect" id="node1" title="ged::Letter class definition." alt="" coords="423,5,596,32"/>
+<area shape="rect" id="node2" href="$letter_8hpp.html" title="ged::Letter class declaration." alt="" coords="421,80,598,107"/>
+<area shape="rect" id="node3" href="$ged__data_8hpp.html" title="ged::GEDData class declaration." alt="" coords="429,155,590,181"/>
+<area shape="rect" id="node4" href="$ged__method_8hpp.html" title="ged::GEDMethod class declaration." alt="" coords="330,229,545,256"/>
+<area shape="rect" id="node6" href="$ged__env_8hpp.html" title="ged::GEDEnv class declaration." alt="" coords="432,379,587,405"/>
+<area shape="rect" id="node5" href="$all__methods_8hpp.html" title="Includes all methods to enable mutual usability while avoiding circular dependencies." alt="" coords="330,304,545,331"/>
+<area shape="rect" id="node7" href="$ged__env_8gxl_8cpp.html" title="ged::GEDEnv&lt;ged::GXLUserNodeID, ged::GXLLabel, ged::GXLLabel&gt; template instantiation." alt="" coords="5,461,184,487"/>
+<area shape="rect" id="node8" href="$learn__ring__params_8cpp.html" title="Learn the parameters of the method ged::Ring for different datasets." alt="" coords="209,453,383,495"/>
+<area shape="rect" id="node9" href="$learn__subgraph__depths_8cpp.html" title="Learn the parameters of the method ged::Subgraph for different datasets." alt="" coords="407,453,611,495"/>
+<area shape="rect" id="node10" href="$learn__walks__depths_8cpp.html" title="Learn the parameters of the method ged::Walks for different datasets." alt="" coords="635,453,818,495"/>
+<area shape="rect" id="node11" href="$test__lsape__based__methods_8cpp.html" title="Tests performance of derived classes of ged::LSAPEBasedMethod." alt="" coords="842,453,1073,495"/>
+</map>

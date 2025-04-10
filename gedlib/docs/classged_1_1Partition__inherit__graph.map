@@ -1,0 +1,4 @@
+<map id="ged::Partition&lt; UserNodeLabel, UserEdgeLabel &gt;" name="ged::Partition&lt; UserNodeLabel, UserEdgeLabel &gt;">
+<area shape="rect" id="node1" title="Computes a lower bound for uniform edit costs." alt="" coords="17,95,204,136"/>
+<area shape="rect" id="node2" href="$classged_1_1GEDMethod.html" title="Abstract class for the (suboptimal) computation of the graph edit distance." alt="" coords="5,5,216,47"/>
+</map>

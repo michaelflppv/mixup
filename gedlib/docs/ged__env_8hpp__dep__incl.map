@@ -1,0 +1,8 @@
+<map id="src/env/ged_env.hpp" name="src/env/ged_env.hpp">
+<area shape="rect" id="node1" title="ged::GEDEnv class declaration." alt="" coords="432,5,587,32"/>
+<area shape="rect" id="node2" href="$ged__env_8gxl_8cpp.html" title="ged::GEDEnv&lt;ged::GXLUserNodeID, ged::GXLLabel, ged::GXLLabel&gt; template instantiation." alt="" coords="5,87,184,114"/>
+<area shape="rect" id="node3" href="$learn__ring__params_8cpp.html" title="Learn the parameters of the method ged::Ring for different datasets." alt="" coords="209,80,383,121"/>
+<area shape="rect" id="node4" href="$learn__subgraph__depths_8cpp.html" title="Learn the parameters of the method ged::Subgraph for different datasets." alt="" coords="407,80,611,121"/>
+<area shape="rect" id="node5" href="$learn__walks__depths_8cpp.html" title="Learn the parameters of the method ged::Walks for different datasets." alt="" coords="635,80,818,121"/>
+<area shape="rect" id="node6" href="$test__lsape__based__methods_8cpp.html" title="Tests performance of derived classes of ged::LSAPEBasedMethod." alt="" coords="842,80,1073,121"/>
+</map>

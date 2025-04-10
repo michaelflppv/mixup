@@ -1,0 +1,10 @@
+<map id="src/methods/subgraph.ipp" name="src/methods/subgraph.ipp">
+<area shape="rect" id="node1" title="ged::Subgraph class definition." alt="" coords="414,5,605,32"/>
+<area shape="rect" id="node2" href="$all__methods_8hpp.html" title="Includes all methods to enable mutual usability while avoiding circular dependencies." alt="" coords="402,80,617,107"/>
+<area shape="rect" id="node3" href="$ged__env_8hpp.html" title="ged::GEDEnv class declaration." alt="" coords="432,155,587,181"/>
+<area shape="rect" id="node4" href="$ged__env_8gxl_8cpp.html" title="ged::GEDEnv&lt;ged::GXLUserNodeID, ged::GXLLabel, ged::GXLLabel&gt; template instantiation." alt="" coords="5,237,184,263"/>
+<area shape="rect" id="node5" href="$learn__ring__params_8cpp.html" title="Learn the parameters of the method ged::Ring for different datasets." alt="" coords="209,229,383,271"/>
+<area shape="rect" id="node6" href="$learn__subgraph__depths_8cpp.html" title="Learn the parameters of the method ged::Subgraph for different datasets." alt="" coords="407,229,611,271"/>
+<area shape="rect" id="node7" href="$learn__walks__depths_8cpp.html" title="Learn the parameters of the method ged::Walks for different datasets." alt="" coords="635,229,818,271"/>
+<area shape="rect" id="node8" href="$test__lsape__based__methods_8cpp.html" title="Tests performance of derived classes of ged::LSAPEBasedMethod." alt="" coords="842,229,1073,271"/>
+</map>

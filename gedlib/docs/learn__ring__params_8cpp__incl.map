@@ -1,0 +1,102 @@
+<map id="tests/sspr2018/src/learn_ring_params.cpp" name="tests/sspr2018/src/learn_ring_params.cpp">
+<area shape="rect" id="node1" title="Learn the parameters of the method ged::Ring for different datasets." alt="" coords="3129,5,3304,47"/>
+<area shape="rect" id="node2" href="$ged__env_8hpp.html" title="ged::GEDEnv class declaration." alt="" coords="3150,95,3283,136"/>
+<area shape="rect" id="node3" href="$common__types_8hpp.html" title="Type declarations used by various classes." alt="" coords="1519,736,1669,763"/>
+<area shape="rect" id="node39" href="$ged__graph_8hpp.html" title="ged::GEDGraph class declaration." alt="" coords="1429,587,1548,613"/>
+<area shape="rect" id="node42" href="$node__map_8hpp.html" title="ged::NodeMap class declaration." alt="" coords="1277,505,1396,531"/>
+<area shape="rect" id="node44" href="$all__methods_8hpp.html" title="Includes all methods to enable mutual usability while avoiding circular dependencies." alt="" coords="4849,184,5051,211"/>
+<area shape="rect" id="node46" href="$ged__data_8hpp.html" title="ged::GEDData class declaration." alt="" coords="1536,333,1687,360"/>
+<area shape="rect" id="node100" href="$ged__env_8ipp.html" title="ged::GEDEnv class definition." alt="" coords="8647,184,8747,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,818,76,845"/>
+<area shape="rect" id="node5" title=" " alt="" coords="100,818,187,845"/>
+<area shape="rect" id="node6" title=" " alt="" coords="211,818,270,845"/>
+<area shape="rect" id="node7" title=" " alt="" coords="295,818,357,845"/>
+<area shape="rect" id="node8" title=" " alt="" coords="382,818,425,845"/>
+<area shape="rect" id="node9" title=" " alt="" coords="449,818,499,845"/>
+<area shape="rect" id="node10" title=" " alt="" coords="524,818,587,845"/>
+<area shape="rect" id="node11" title=" " alt="" coords="611,818,670,845"/>
+<area shape="rect" id="node12" title=" " alt="" coords="694,818,809,845"/>
+<area shape="rect" id="node13" title=" " alt="" coords="917,900,983,927"/>
+<area shape="rect" id="node14" title=" " alt="" coords="1201,818,1264,845"/>
+<area shape="rect" id="node15" title=" " alt="" coords="1043,900,1123,927"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1288,818,1329,845"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1354,818,1429,845"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1453,818,1527,845"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1551,818,1637,845"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1661,818,1733,845"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1792,900,1879,927"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1912,818,1988,845"/>
+<area shape="rect" id="node23" title=" " alt="" coords="2012,811,2181,852"/>
+<area shape="rect" id="node24" title=" " alt="" coords="2205,811,2375,852"/>
+<area shape="rect" id="node25" title=" " alt="" coords="2399,818,2559,845"/>
+<area shape="rect" id="node26" title=" " alt="" coords="2583,811,2791,852"/>
+<area shape="rect" id="node27" title=" " alt="" coords="2816,811,2967,852"/>
+<area shape="rect" id="node28" title=" " alt="" coords="2991,811,3141,852"/>
+<area shape="rect" id="node29" title=" " alt="" coords="3166,818,3235,845"/>
+<area shape="rect" id="node30" title=" " alt="" coords="3259,818,3337,845"/>
+<area shape="rect" id="node31" title=" " alt="" coords="3361,818,3424,845"/>
+<area shape="rect" id="node32" title=" " alt="" coords="3449,818,3555,845"/>
+<area shape="rect" id="node33" title=" " alt="" coords="3579,818,3673,845"/>
+<area shape="rect" id="node34" title=" " alt="" coords="3697,818,3760,845"/>
+<area shape="rect" id="node35" title=" " alt="" coords="3784,818,3879,845"/>
+<area shape="rect" id="node36" href="$timer_8hpp.html" title="ged::Timer class declaration." alt="" coords="1041,818,1125,845"/>
+<area shape="rect" id="node37" href="$error_8hpp.html" title="ged::Error class declaration." alt="" coords="1757,818,1837,845"/>
+<area shape="rect" id="node38" href="$progress__bar_8hpp.html" title="ged::ProgressBar class declaration." alt="" coords="883,818,1017,845"/>
+<area shape="rect" id="node40" href="$matrix_8hpp.html" title="ged::Matrix class declaration." alt="" coords="1506,661,1599,688"/>
+<area shape="rect" id="node41" href="$ged__graph_8ipp.html" title="GEDGraph class definition." alt="" coords="1367,661,1482,688"/>
+<area shape="rect" id="node43" href="$node__map_8ipp.html" title="ged::NodeMap class definition." alt="" coords="1290,587,1405,613"/>
+<area shape="rect" id="node45" href="$ged__method_8hpp.html" title="ged::GEDMethod class declaration." alt="" coords="7354,259,7485,285"/>
+<area shape="rect" id="node51" href="$lsape__based__method_8hpp.html" title="ged::LSAPEBasedMethod class declaration." alt="" coords="6759,259,6947,285"/>
+<area shape="rect" id="node52" href="$ls__based__method_8hpp.html" title="ged::LSBasedMethod class declaration." alt="" coords="6971,259,7135,285"/>
+<area shape="rect" id="node53" href="$ml__based__method_8hpp.html" title="ged::MLBasedMethod class declaration." alt="" coords="7159,259,7330,285"/>
+<area shape="rect" id="node54" href="$branch__tight_8hpp.html" title="ged::BranchTight class declaration." alt="" coords="7509,259,7639,285"/>
+<area shape="rect" id="node55" href="$anchor__aware__ged_8hpp.html" title="ged::AnchorAwareGED class declaration." alt="" coords="7664,259,7836,285"/>
+<area shape="rect" id="node56" href="$partition_8hpp.html" title="Partition class declaration." alt="" coords="7860,259,7965,285"/>
+<area shape="rect" id="node57" href="$hybrid_8hpp.html" title="ged::Hybrid class declaration." alt="" coords="7990,259,8081,285"/>
+<area shape="rect" id="node58" href="$branch__compact_8hpp.html" title="ged::BranchCompact class declaration." alt="" coords="8105,259,8262,285"/>
+<area shape="rect" id="node59" href="$hed_8hpp.html" title="ged::HED class declaration." alt="" coords="8286,259,8361,285"/>
+<area shape="rect" id="node60" href="$simulated__annealing_8hpp.html" title="ged::SimulatedAnnealing class declaration." alt="" coords="8385,259,8571,285"/>
+<area shape="rect" id="node61" href="$bipartite_8hpp.html" title="ged::Bipartite class declaration." alt="" coords="1523,259,1628,285"/>
+<area shape="rect" id="node62" href="$branch_8hpp.html" title="ged::Branch class declaration." alt="" coords="1652,259,1747,285"/>
+<area shape="rect" id="node63" href="$branch__fast_8hpp.html" title="ged::BranchFast class declaration." alt="" coords="1771,259,1897,285"/>
+<area shape="rect" id="node64" href="$branch__uniform_8hpp.html" title="ged::BranchUniform class declaration." alt="" coords="1922,259,2074,285"/>
+<area shape="rect" id="node65" href="$node_8hpp.html" title="ged::Node class declaration." alt="" coords="2098,259,2181,285"/>
+<area shape="rect" id="node66" href="$ring_8hpp.html" title="ged::Ring class declaration" alt="" coords="2205,259,2279,285"/>
+<area shape="rect" id="node67" href="$star_8hpp.html" title="ged::Star class declaration." alt="" coords="2303,259,2378,285"/>
+<area shape="rect" id="node68" href="$subgraph_8hpp.html" title="ged::Subgraph class declaration." alt="" coords="2403,259,2513,285"/>
+<area shape="rect" id="node69" href="$walks_8hpp.html" title="ged::Walks class declaration." alt="" coords="2538,259,2626,285"/>
+<area shape="rect" id="node70" href="$ipfp_8hpp.html" title="ged::IPFP class declaration." alt="" coords="2650,259,2725,285"/>
+<area shape="rect" id="node71" href="$refine_8hpp.html" title="ged::Refine class declaration." alt="" coords="2749,259,2836,285"/>
+<area shape="rect" id="node72" href="$bp__beam_8hpp.html" title="ged::BPBeam class declaration." alt="" coords="2860,259,2971,285"/>
+<area shape="rect" id="node73" href="$bipartite__ml_8hpp.html" title="ged::BipartiteML class declaration." alt="" coords="2995,259,3124,285"/>
+<area shape="rect" id="node74" href="$ring__ml_8hpp.html" title="ged::RingML class declaration." alt="" coords="3149,259,3247,285"/>
+<area shape="rect" id="node75" href="$ged__method_8ipp.html" title="GEDMethod class definition." alt="" coords="3272,259,3399,285"/>
+<area shape="rect" id="node76" href="$lsape__based__method_8ipp.html" title="ged::LSAPEBasedMethod class defeinition." alt="" coords="3423,259,3607,285"/>
+<area shape="rect" id="node77" href="$ls__based__method_8ipp.html" title="ged::LSBasedMethod class definition." alt="" coords="3631,259,3791,285"/>
+<area shape="rect" id="node78" href="$ml__based__method_8ipp.html" title="ged::MLBasedMethod class definition." alt="" coords="3816,259,3983,285"/>
+<area shape="rect" id="node79" href="$branch__tight_8ipp.html" title="ged::BranchTight class definition." alt="" coords="4007,259,4133,285"/>
+<area shape="rect" id="node80" href="$anchor__aware__ged_8ipp.html" title="ged::AnchorAwareGED class definition." alt="" coords="4158,259,4326,285"/>
+<area shape="rect" id="node81" href="$partition_8ipp.html" title="Partition class definition." alt="" coords="4350,259,4451,285"/>
+<area shape="rect" id="node82" href="$hybrid_8ipp.html" title="Hybrid class definition." alt="" coords="4476,259,4563,285"/>
+<area shape="rect" id="node83" href="$branch__compact_8ipp.html" title="BranchCompact class definition." alt="" coords="4587,259,4740,285"/>
+<area shape="rect" id="node84" href="$hed_8ipp.html" title="ged::HED class definition." alt="" coords="4764,259,4835,285"/>
+<area shape="rect" id="node85" href="$simulated__annealing_8ipp.html" title="ged::SimulatedAnnealing class definition." alt="" coords="4859,259,5041,285"/>
+<area shape="rect" id="node86" href="$bipartite_8ipp.html" title="Bipartite class definition." alt="" coords="5066,259,5167,285"/>
+<area shape="rect" id="node87" href="$branch_8ipp.html" title="Branch class definition." alt="" coords="5191,259,5282,285"/>
+<area shape="rect" id="node88" href="$branch__fast_8ipp.html" title="BranchFast class definition." alt="" coords="5306,259,5429,285"/>
+<area shape="rect" id="node89" href="$branch__uniform_8ipp.html" title="BranchUniform class definition." alt="" coords="5453,259,5601,285"/>
+<area shape="rect" id="node90" href="$node_8ipp.html" title="Node class definition." alt="" coords="5625,259,5704,285"/>
+<area shape="rect" id="node91" href="$ring_8ipp.html" title="ged::Ring class definition." alt="" coords="5728,259,5799,285"/>
+<area shape="rect" id="node92" href="$star_8ipp.html" title="ged::Star class definition." alt="" coords="5823,259,5893,285"/>
+<area shape="rect" id="node93" href="$subgraph_8ipp.html" title="ged::Subgraph class definition." alt="" coords="5918,259,6025,285"/>
+<area shape="rect" id="node94" href="$walks_8ipp.html" title="ged::Walks class definition" alt="" coords="6049,259,6133,285"/>
+<area shape="rect" id="node95" href="$ipfp_8ipp.html" title="ged::IPFP class definition." alt="" coords="6157,259,6228,285"/>
+<area shape="rect" id="node96" href="$refine_8ipp.html" title="ged::Refine class definition." alt="" coords="6253,259,6335,285"/>
+<area shape="rect" id="node97" href="$bp__beam_8ipp.html" title="ged::BPBeam class definition." alt="" coords="6359,259,6466,285"/>
+<area shape="rect" id="node98" href="$bipartite__ml_8ipp.html" title="ged::BipartiteML class definition." alt="" coords="6490,259,6615,285"/>
+<area shape="rect" id="node99" href="$ring__ml_8ipp.html" title="RingML class definition." alt="" coords="6640,259,6735,285"/>
+<area shape="rect" id="node47" href="$result_8hpp.html" title="ged::Result struct declaration." alt="" coords="1309,415,1396,442"/>
+<area shape="rect" id="node48" href="$edit__costs_8hpp.html" title="ged::EditCosts class declaration." alt="" coords="1789,497,1919,539"/>
+<area shape="rect" id="node49" href="$chem__1_8hpp.html" title="ged::CHEM1 class declaration." alt="" coords="1675,408,1815,449"/>
+<area shape="rect" id="node50" href="$chem__2_8hpp.html" title="ged::CHEM2 class declaration." alt="" coords="1839,408,1979,449"/>
+</map>
