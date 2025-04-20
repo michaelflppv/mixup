@@ -93,14 +93,14 @@
 
 ### 4.4 Ablation (Q3)  
 - **SubMixBase** (random node‐swap) vs. full SubMix: full yields highest accuracy/rank.  
-- **NodeSamBase** (no adjustment) vs. full NodeSam: adjustment step is crucial to preserve edge/triangle counts (Fig 7).
+- **NodeSamBase** (no adjustment) vs. full NodeSam: adjustment step is crucial to preserve edge/triangle counts (Fig 7).
 
 ### 4.5 Hyperparameter Settings
 
-| Hyperparameter    | Description                                                                                 | Options / Range              |
-|-------------------|---------------------------------------------------------------------------------------------|------------------------------|
-| **p**             | Target augmentation ratio for SubMix: controls size of the subgraph patch to swap            | Continuous ∈ (0, 1), set to 0.4 |
-| **α**             | Teleport (restart) probability in Personalized PageRank diffusion used for subgraph sampling | Continuous ∈ (0, 1), set to 0.15 |
+| Hyperparameter    | Description                                                                                 | Options / Range                  |
+|-------------------|---------------------------------------------------------------------------------------------|----------------------------------|
+| **p**             | Target augmentation ratio for SubMix: controls size of the subgraph patch to swap            | Continuous ∈ (0, 1), set to 0.4  |
+| **α**             | Teleport (restart) probability in Personalized PageRank diffusion used for subgraph sampling | Continuous ∈ (0, 1), set to 0.15 |
 
 
 ---
